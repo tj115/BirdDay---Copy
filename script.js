@@ -52,11 +52,11 @@ if (navigator.getUserMedia_) {
             fire4.style.display = "block";
           }
         
-          if (average > 5) fire0.style.display = "none";
-          if (average > 10) fire1.style.display = "none";
-          if (average > 15) fire2.style.display = "none";
-          if (average > 20) fire3.style.display = "none";
-          if (average > 30) fire4.style.display = "none";
+             if (average > 5)fire0.style.display = "none";
+             if (average > 10)fire1.style.display = "none";
+             if (average > 15)fire2.style.display = "none";
+             if (average > 20)fire3.style.display= "none";
+             if (average > 25)fire4.style.display = "none", x.style.visibility="visible",y.style.visibility="visible",z.style.visibility="visible",f.style.visibility="visible"
 
         } // end fn stream
     },

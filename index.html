@@ -15,16 +15,42 @@
          height: 100%;
          }
          body {
-         background: #be94eb;
-         background: radial-gradient(ellipse at center, #a27bcc 0%, #6c5299 100%);
+         background:#E97373;
          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a27bcc', endColorstr='#6c5299', GradientType=1);
          }
+         .btn {
+         color:  #000;
+         width: 150px;
+         height: 50px;
+         padding: 5px;
+         background-color:  #FDB927;
+         border: 2px solid #000000;
+         border-radius: 0.6rem;
+         font-family: "Luckiest Guy", cursive;
+         position: absolute;
+         top: 40px;
+         left: 40px;
+         visibility: hidden;
+         z-index: 3;
+         }
+         .title{
+         background-color: #F0EFF4;
+         max-width: 100%;
+         align-items: center;
+         justify-content: center;
+         vertical-align: top;
+         margin-top:-50px;
+         visibility: hidden;
+         }
          .Head{
-            display: flex;
-            justify-content: center;
-            position: relative;
-            align-content: center;
-            align-self: center;
+         display: flex;
+         justify-content: center;
+         position: relative;
+         align-content: center;
+         align-self: center;
+         margin-bottom: 200px;
+         visibility: hidden;
+         margin-top: 200px;
          }
          /* ============================================== POSITION
          */
@@ -214,11 +240,22 @@
          user-select: none;
          }
          h1 {
-         color: #f780e1;
+         color: #5B2333;
          font-size: 5em;
          position: relative;
          padding-bottom: 100px;
-         font-family: 'Waiting for the Sunrise', cursive; 
+         font-family: 'Waiting for the Sunrise', cursive;
+         z-index: 3; 
+         }
+         h3{
+         color: #5B2333;
+         font-size: 5em;
+         position: relative;
+         justify-self: center;
+         padding-bottom:-100px;
+         margin-bottom:-250px;
+         font-family: 'Waiting for the Sunrise', cursive;
+         z-index: 3; 
          }
          p {
          color: rgba(236, 231, 227, 0.6);
@@ -232,7 +269,8 @@
          position: fixed;
          top: 0px;
          width: 100%;
-         z-index: -1;
+         z-index: 2;
+         visibility: hidden;
          }
          /* Main card box */
          .CardContainer{
@@ -244,6 +282,7 @@
          position: relative;
          margin-bottom: 50000000px;
          padding-bottom: 100px;
+         visibility: hidden;
          }
          .card {
          position: fixed;
@@ -254,6 +293,7 @@
          filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
          transform: rotate(-1deg);
          margin-right: 50px;
+         z-index: 2;
          }
          /* Inner text container */
          .card .container {
@@ -341,9 +381,9 @@
          }
          .card {
          position: relative;
-         width: 220px;
-         height: 325px;
-         background-color: #e6f0e6;
+         width: 250px;
+         height: 380px;
+         background: linear-gradient(90deg, rgba(247, 210, 241, 1) 0%, rgb(250, 223, 238) 50%);
          filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
          transform: rotate(-1deg);
          }
@@ -378,20 +418,86 @@
          margin: 10px 20px;
          }
          @media only screen and (max-width:600px){
-            .CardContainer{
-               display: flex;
-               flex-direction: column;
-               align-items: right;
-              
-            }
-            .card{
-                margin-bottom: 50px;
-                margin-left: 300px;
-            }
+         .CardContainer{
+         display: flex;
+         flex-direction: column;
+         align-items: right;
+         }
+         .card{
+         margin-bottom: 50px;
+         margin-left: 300px;
+         margin-right: 15px;
+         align-items: center;
+         }
+         .card .container {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: column;
+         width: 80%;
+         height: 100%;
+         /* Light gradient background */
+         background: linear-gradient(90deg, rgba(247, 210, 241, 1) 0%, rgb(250, 223, 238) 50%);
+         }
+         .card .container2 {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: column;
+         width: 90%;
+         height: 100%;
+         /* Light gradient background */
+         background: linear-gradient(90deg, rgb(130, 158, 241) 0%, rgb(123, 147, 234) 50%);
+         }
+         .ins{
+         margin-bottom: -300000px;
+         }
          }
       </style>
       <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
       <script>
+         const buttonHeight = 50;
+const buttonWidth = 150;
+
+const maxWidth = window.innerWidth - buttonWidth;
+const maxHeight = window.innerHeight - buttonHeight;
+
+let attempts = 0;
+
+window.addEventListener("DOMContentLoaded", () => {
+
+   const button = document.getElementById("btn");
+   const cards = document.getElementById("CardContainer");
+
+   button.addEventListener("click", () => {
+
+      alert("your surprise is ready!");
+
+      cards.style.visibility = "visible";
+      button.style.visibility="hidden";
+      cards.scrollIntoView({ behavior: "smooth", block: "start" });
+
+   });
+
+   button.addEventListener("mouseenter", () => {
+
+      if (attempts >= 10) {
+         return;
+      }
+
+      attempts++;
+
+      button.style.left =
+         Math.floor(Math.random() * maxWidth) + "px";
+
+      button.style.top =
+         Math.floor(Math.random() * maxHeight) + "px";
+
+   });
+
+});
+         
+
          // CREDIT FOR MICROPHONE CODE
          // Travis Holliday
          // https://codepen.io/travisholliday/pen/gyaJk
@@ -409,6 +515,12 @@
          var fire2 = document.getElementById("fire2");
          var fire3 = document.getElementById("fire3");
          var fire4 = document.getElementById("fire4");
+         var x = document.getElementById("title");
+         var y = document.getElementById("Header");
+         var z = document.getElementById("confetti");
+         var f = document.getElementById("ins");
+         var cards = document.getElementById("CardContainer");
+         var b = document.getElementById("btn")
          
          audioContext = new AudioContext();
          analyser = audioContext.createAnalyser();
@@ -450,7 +562,44 @@
              if (average > 10) fire1.style.display = "none";
              if (average > 15) fire2.style.display = "none";
              if (average > 20) fire3.style.display = "none";
-             if (average > 30) fire4.style.display = "none";
+             if (average > 30) fire4.style.display = "none"; 
+         
+            function setvis()
+            {
+               
+         
+               z.style.visibility = "visible";
+               f.style.visibility="hidden";
+               b.style.visibility="visible"
+                 
+            }
+            
+            if (average > 30) {
+                     setTimeout(() => {
+                     setvis()
+                  }, 1000);
+            }
+         
+            function setvis1()
+            {
+               
+         
+               
+         
+               x.style.visibility = "visible";
+               y.style.visibility = "visible";
+               x.scrollIntoView({ behavior: "smooth", block: "start" });
+               
+              
+         
+                 
+            }
+            
+            if (average > 30) {
+                     setTimeout(() => {
+                     setvis1()
+                  }, 2000);
+            }         
          
            } // end fn stream
          },
@@ -810,49 +959,57 @@
          });
       </script>
    </head>
-   <div id="confetti"></div>
-   <h1>Happy 22nd Birthday, Nadia!</h1>
-   <div class="Head">
-      <img src="images/c81b7e52-6de9-4d5c-a1be-f749230aa624.jpg">
-   </div>
-   <div class="cake">
-      <div class="velas">
-         <div class="fuego" id="fire0"></div>
-         <div class="fuego" id="fire1"></div>
-         <div class="fuego" id="fire2"></div>
-         <div class="fuego" id="fire3"></div>
-         <div class="fuego" id="fire4"></div>
+   <div class="home">
+      <div id="confetti"></div>
+      <div id="title" class="title">
+         <h1>Happy 22nd Birthday, Nadia!</h1>
       </div>
-      <div class="cobertura"></div>
-      <div class="bizcocho"></div>
-   </div>
-   <!-- Main card wrapper -->
-   <div class="CardContainer">
-      <div class="card">
-         <!-- Back side of the card (shows when flipped) -->
-         <div class="back">
-            <img src="images/Denice.jpg" alt="">
-         </div>
-         <!-- Front side of the card -->
-         <div class="front">
-            <img src="images/Birthday.jpg" alt="">
-         </div>
-         <div class="container">
-            <p>Happy Birthday to an amazing friend. Thank you for always bringing so much light and fun into my life. So glad we get to celebrate you today. Have the best day ever... Live like Larry. Cheers to another year of wild adventures, endless laughs, and you being the absolute coolest person I know. Let’s celebrate IRL soon! 😁🎂
-            </p>
-         </div>
+      <h3 id="ins">Blow out the candle!</h3>
+      <div id="Header" class="Head fadein">
+         <img src="images/c81b7e52-6de9-4d5c-a1be-f749230aa624.jpg">
       </div>
-      <div class="card">
-         <!-- Back side of the card (shows when flipped) -->
-         <div class="back">
-            <img src="images/TN.jpg" alt="">
+      <div class="cake">
+         <div class="velas">
+            <div class="fuego" id="fire0"></div>
+            <div class="fuego" id="fire1"></div>
+            <div class="fuego" id="fire2"></div>
+            <div class="fuego" id="fire3"></div>
+            <div class="fuego" id="fire4"></div>
          </div>
-         <!-- Front side of the card -->
-         <div class="front">
-            <img src="images/tyreece.png" alt="">
+         <div class="cobertura"></div>
+         <div class="bizcocho"></div>
+      </div>
+      
+         <button id="btn" class="btn">Click for surprise!</button>
+      
+      <!-- Main card wrapper -->
+      <div id="CardContainer" class="CardContainer">
+         <div class="card">
+            <!-- Back side of the card (shows when flipped) -->
+            <div class="back">
+               <img src="images/Denice.jpg" alt="">
+            </div>
+            <!-- Front side of the card -->
+            <div class="front">
+               <img src="images/birthday.jpg" alt="">
+            </div>
+            <div class="container">
+               <p>Happy Birthday to an amazing friend. Thank you for always bringing so much light and fun into my life. So glad we get to celebrate you today. Have the best day ever... Live like Larry. Cheers to another year of wild adventures, endless laughs, and you being the absolute coolest person I know. Let’s celebrate IRL soon! 😁🎂
+               </p>
+            </div>
          </div>
-         <div class="container2">
-            <p2>Happy 22nd birthday to the love of my life💝 It still blows my mind how our story unravelled, from two kids running around the grounds at Acacia to two bigger kids falling in love and planning a future together. Thank you for liking that weird kid back then and thank you for loving this weird guy right now, hope your day is as amazing as you are and I can't wait to see you again. I Love you Nadia, have an amazing birthday🎉💖 </p2>
+         <div class="card">
+            <!-- Back side of the card (shows when flipped) -->
+            <div class="back">
+               <img src="images/TN.jpg" alt="">
+            </div>
+            <!-- Front side of the card -->
+            <div class="front">
+               <img src="images/tyreece.png" alt="">
+            </div>
+            <div class="container2">
+               <p2>Happy 22nd birthday to the love of my life💝 It still blows my mind how our story unravelled, from two kids running around the grounds at Acacia to two bigger kids falling in love and planning a future together. Thank you for liking that weird kid back then and thank you for loving this weird guy right now, hope your day is as amazing as you are and I can't wait to see you again. I Love you Nadia, have an amazing birthday🎉💖 </p2>
+            </div>
          </div>
       </div>
    </div>
