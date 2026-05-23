@@ -418,41 +418,54 @@
          margin: 10px 20px;
          }
          @media only screen and (max-width:600px){
-         .CardContainer{
-         display: flex;
-         flex-direction: column;
-         align-items: right;
-         }
-         .card{
-         margin-bottom: 50px;
-         margin-left: 300px;
-         margin-right: 15px;
-         align-items: center;
-         }
-         .card .container {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         flex-direction: column;
-         width: 80%;
-         height: 100%;
-         /* Light gradient background */
-         background: linear-gradient(90deg, rgba(247, 210, 241, 1) 0%, rgb(250, 223, 238) 50%);
-         }
-         .card .container2 {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         flex-direction: column;
-         width: 90%;
-         height: 100%;
-         /* Light gradient background */
-         background: linear-gradient(90deg, rgb(130, 158, 241) 0%, rgb(123, 147, 234) 50%);
-         }
+.CardContainer{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+
+      margin: 0;
+      overflow-x: hidden;
+   }
+
+   .card{
+      width: 90%;
+      max-width: 320px;
+      height: auto;
+      min-height: 420px;
+
+      margin: 0;
+      transform: none;
+   }
+
+   .card .front,
+   .card .back{
+      width: 100%;
+      height: 100%;
+   }
+
+   .card .front img,
+   .card .back img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+
+   .card .container,
+   .card .container2{
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+   }
          .ins{
          margin-bottom: -300000px;
          }
-         }
+      }
       </style>
       <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
       <script>
