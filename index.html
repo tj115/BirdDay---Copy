@@ -605,11 +605,11 @@ window.addEventListener("DOMContentLoaded", () => {
                fire4.style.display = "block";
              }
            
-             if (average > 10) fire0.style.display = "none";
-             if (average > 20) fire1.style.display = "none";
-             if (average > 25) fire2.style.display = "none";
-             if (average > 30) fire3.style.display = "none";
-             if (average > 35) fire4.style.display = "none"; 
+             if (average > 40) fire0.style.display = "none";
+             if (average > 45) fire1.style.display = "none";
+             if (average > 50) fire2.style.display = "none";
+             if (average > 55) fire3.style.display = "none";
+             if (average > 60) fire4.style.display = "none"; 
          
             function setvis()
             {
@@ -621,7 +621,7 @@ window.addEventListener("DOMContentLoaded", () => {
                  
             }
             
-            if (average > 30) {
+            if (average > 60) {
                      setTimeout(() => {
                      setvis()
                   }, 1000);
@@ -644,7 +644,7 @@ function setvis1() {
    }
 }
 
-if (average > 30 && !hasScrolled) {
+if (average > 60 && !hasScrolled) {
 
    setTimeout(() => {
       setvis1();
