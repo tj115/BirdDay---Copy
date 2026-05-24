@@ -253,7 +253,7 @@
          position: relative;
          justify-self: center;
          padding-bottom:-100px;
-         margin-bottom:-250px;
+         margin-bottom:100px;
          font-family: 'Waiting for the Sunrise', cursive;
          z-index: 3; 
          }
@@ -488,6 +488,18 @@
 </style>
       <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
       <script>
+window.addEventListener("DOMContentLoaded", () => {
+
+   const cake = document.getElementById("cake");
+
+   // Focus on cake when page loads
+   cake.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+   });
+
+});
+
          const buttonHeight = 50;
 const buttonWidth = 150;
 
@@ -605,11 +617,11 @@ window.addEventListener("DOMContentLoaded", () => {
                fire4.style.display = "block";
              }
            
-             if (average > 15) fire0.style.display = "none";
-             if (average > 20) fire1.style.display = "none";
-             if (average > 25) fire2.style.display = "none";
-             if (average > 30) fire3.style.display = "none";
-             if (average > 35) fire4.style.display = "none"; 
+             if (average > 20) fire0.style.display = "none";
+             if (average > 25) fire1.style.display = "none";
+             if (average > 30) fire2.style.display = "none";
+             if (average > 35) fire3.style.display = "none";
+             if (average > 40) fire4.style.display = "none"; 
          
             function setvis()
             {
@@ -621,7 +633,7 @@ window.addEventListener("DOMContentLoaded", () => {
                  
             }
             
-            if (average > 30) {
+            if (average > 40) {
                      setTimeout(() => {
                      setvis()
                   }, 1000);
@@ -644,7 +656,7 @@ function setvis1() {
    }
 }
 
-if (average > 30) {
+if (average > 40) {
 
    setTimeout(() => {
       setvis1();
@@ -1015,11 +1027,12 @@ if (average > 30) {
       <div id="title" class="title">
          <h1>Happy 22nd Birthday, Nadia!</h1>
       </div>
-      <h3 id="ins">Blow out the candle!</h3>
+
       <div id="Header" class="Head fadein">
          <img src="images/c81b7e52-6de9-4d5c-a1be-f749230aa624.jpg">
       </div>
-      <div class="cake">
+      <h3 id="ins">Blow out the candle!</h3>
+      <div id="cake" class="cake">
          <div class="velas">
             <div class="fuego" id="fire0"></div>
             <div class="fuego" id="fire1"></div>
