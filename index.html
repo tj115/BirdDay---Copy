@@ -269,195 +269,221 @@
          position: fixed;
          top: 0px;
          width: 100%;
-         z-index: 2;
+         
          visibility: hidden;
          }
-         /* Main card box */
-         .CardContainer{
-         overflow: hidden;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         padding-top: 100px;
-         position: relative;
-         margin-bottom: 50000000px;
-         padding-bottom: 100px;
-         visibility: hidden;
-         }
-         .card {
-         position: fixed;
-         align-self: center;
-         width: 220px;
-         height: 325px;
-         background-color: #e6f0e6;
-         filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
-         transform: rotate(-1deg);
-         margin-right: 50px;
-         z-index: 2;
-         }
-         /* Inner text container */
-         .card .container {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         flex-direction: column;
-         width: 100%;
-         height: 100%;
-         /* Light gradient background */
-         background: linear-gradient(90deg, rgba(247, 210, 241, 1) 0%, rgb(250, 223, 238) 50%);
-         }
-         .strikethrough {
-         text-decoration: line-through;
-         }
-         /* Main header text */
-         .card .container #head {
-         font-family: 'Nobile', sans-serif;
-         font-size: 1em;
-         color: #000;
-         font-weight: 700;
-         margin-top: -30px;
-         margin-bottom: 20px;
-         padding-right:50px ;
-         }
-         /* Paragraph styling */
-         .card p {
-         font-size: .8em;
-         line-height: 1.5;
-         font-family: 'Nobile';
-         color: #6b079d;
-         font-style: italic;
-         text-align: center;
-         margin: 10px 20px;
-         }
-         /* Front side of the card (visible first) */
-         .card .front {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         position: absolute;
-         width: 100%;
-         height: 100%;
-         /* Needed for 3D flip animation */
-         backface-visibility: hidden;
-         transform-style: preserve-3d;
-         transform-origin: 0% 50%;
-         transform: perspective(800px) rotateY(0deg);
-         transition: all .8s ease-in-out;
-         }
-         /* Ensures both images fill the card */
-         .card .front img,
-         .card .back img {
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-         }
-         /* Back side of card */
-         .card .back {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         position: absolute;
-         width: 100%;
-         height: 100%;
-         backface-visibility: visible;
-         filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
-         transform-style: preserve-3d;
-         transform-origin: 0% 50%;
-         transition: all 0.8s ease-in-out;
-         /* Background when back is visible */
-         background:
-         radial-gradient(circle, rgba(195, 208, 214, 1) 0%, rgb(163, 230, 237) 100%);
-         box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
-         }
-         /* Flip animation on hover */
-         .card:hover .front {
-         transform: perspective(800px) rotateY(-170deg);
-         background-color: #ecf0f1;
-         }
-         /* Back rotates same time as front */
-         .card:hover .back {
-         transform: perspective(800px) rotateY(-170deg);
-         background-color: #ecf0f1;
-         }
-         .card {
-         position: relative;
-         width: 250px;
-         height: 380px;
-         background: linear-gradient(90deg, rgba(247, 210, 241, 1) 0%, rgb(250, 223, 238) 50%);
-         filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
-         transform: rotate(-1deg);
-         }
-         /* Inner text container */
-         .card .container {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         flex-direction: column;
-         width: 100%;
-         height: 100%;
-         /* Light gradient background */
-         background: linear-gradient(90deg, rgba(247, 210, 241, 1) 0%, rgb(250, 223, 238) 50%);
-         }
-         .card .container2 {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         flex-direction: column;
-         width: 100%;
-         height: 100%;
-         /* Light gradient background */
-         background: linear-gradient(90deg, rgb(130, 158, 241) 0%, rgb(123, 147, 234) 50%);
-         }
-         .card p2 {
-         font-size: .8em;
-         line-height: 1.5;
-         font-family: 'Nobile';
-         color: #e8e8e8;
-         font-style: italic;
-         text-align: center;
-         margin: 10px 20px;
-         }
-@media only screen and (max-width:600px){
-   .CardContainer{
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: right;
-      padding-right: 0;
-      margin-right: -10px;
-
-   }
-
-   .card{
-      width: 180px;
-      height: 280px;
-      justify-self: right;
-   }
-
-   .card p,
-   .card p2{
-      font-size: 0.7em;
-      line-height: 1.4;
-      margin: 8px 12px;
-   }
-
-   .card .container,
-   .card .container2{
-      padding: 60px;
-       justify-self: right;
-   }
-   .CardContainer{
-   align-items: flex-end !important;
-   justify-content: flex-start !important;
-
-   width: 100%;
-   padding-right: 0;
+/* Card container */
+.CardContainer {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    justify-self: center;
+    gap: 50px;
+    visibility: hidden;
 }
 
-.card{
-   margin-left: auto !important;
-   margin-right: 0 !important;
+/* Main card */
+.card {
+    position: relative;
+    width: 220px;
+    height: 325px;
+    background-color: #e6f0e6;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+    transform: rotate(-1deg);
+    overflow: visible;
 }
+
+/* INSIDE LEFT PANEL */
+.card .container,
+.card .container2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    padding: 20px;
+
+    z-index: 1;
+}
+
+/* Pink inside */
+.card .container {
+    background: linear-gradient(
+        90deg,
+        rgba(247, 210, 241, 1) 0%,
+        rgb(250, 223, 238) 50%
+    );
+}
+
+/* Blue inside */
+.card .container2 {
+    background: linear-gradient(
+        90deg,
+        rgb(130, 158, 241) 0%,
+        rgb(123, 147, 234) 50%
+    );
+}
+
+/* Front side */
+.card .front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transform-origin: 0% 50%;
+
+    transform: perspective(800px) rotateY(0deg);
+
+    transition: all 0.8s ease-in-out;
+
+    z-index: 3;
+}
+
+/* Back side */
+.card .back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    backface-visibility: visible;
+
+    transform-style: preserve-3d;
+    transform-origin: 0% 50%;
+
+    transition: all 0.8s ease-in-out;
+
+    background: radial-gradient(
+        circle,
+        rgba(195, 208, 214, 1) 0%,
+        rgb(163, 230, 237) 100%
+    );
+
+    z-index: 2;
+}
+
+/* Images */
+.card .front img,
+.card .back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hover animation */
+.card:hover .front {
+    transform: perspective(800px) rotateY(-170deg);
+}
+
+.card:hover .back {
+    transform: perspective(800px) rotateY(-170deg);
+}
+
+/* Header text */
+.card .container #head {
+    font-family: 'Nobile', sans-serif;
+    font-size: 1em;
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Paragraph text */
+.card p,
+.card p2 {
+    font-size: 0.8em;
+    line-height: 1.5;
+    font-family: 'Nobile';
+    font-style: italic;
+    text-align: center;
+    margin: 10px 20px;
+}
+
+/* Pink card text */
+.card p {
+    color: #6b079d;
+}
+
+/* Blue card text */
+.card p2 {
+    color: #e8e8e8;
+    font-size:11.5px;
+    font-weight:700;
+}
+
+/* Strikethrough helper */
+.strikethrough {
+    text-decoration: line-through;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media only screen and (max-width: 600px) {
+
+    .CardContainer {
+      z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+        gap: 40px;
+        padding-right: 0;
+        margin-right: -10px;
+        margin-bottom: 200px;
+    }
+
+    .card {
+        width: 180px;
+        height: 280px;
+
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .card .container,
+    .card .container2 {
+        padding: 15px;
+    }
+
+    .card p,
+    .card p2 {
+        font-size: 0.7em !important;
+        line-height: 1.4;
+        margin: 8px 10px;
+        font-weight: 100;
+    }
+
+    .card .container #head {
+        font-size: 0.9em;
+        margin-bottom: 12px;
+    }
 }
 </style>
       <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
