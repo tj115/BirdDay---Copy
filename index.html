@@ -31,7 +31,7 @@
          top: 40px;
          left: 40px;
          visibility: hidden;
-         z-index: 3;
+         z-index: 5000;
          }
          .title{
          background-color: #F0EFF4;
@@ -41,6 +41,7 @@
          vertical-align: top;
          margin-top:-50px;
          visibility: hidden;
+         z-index: 999999;
          }
          .Head{
          display: flex;
@@ -51,6 +52,7 @@
          margin-bottom: 200px;
          visibility: hidden;
          margin-top: 200px;
+         z-index: -2;
          }
          /* ============================================== POSITION
          */
@@ -245,7 +247,7 @@
          position: relative;
          padding-bottom: 100px;
          font-family: 'Waiting for the Sunrise', cursive;
-         z-index: 3; 
+         z-index: 4000; 
          }
          h3{
          color: #5B2333;
@@ -269,7 +271,7 @@
          position: fixed;
          top: 0px;
          width: 100%;
-         
+         z-index: -1;
          visibility: hidden;
          }
 /* Card container */
@@ -281,6 +283,21 @@
     justify-self: center;
     gap: 50px;
     visibility: hidden;
+}
+.dwn{
+   z-index: 999999;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content:center ;
+   visibility: hidden;
+
+}
+a{
+   font-family: 'Waiting for the Sunrise', cursive;
+    color: #5B2333;
+    font-size: 50px;
+    padding: 200px;
 }
 
 /* Main card */
@@ -319,7 +336,7 @@
 .card .container {
     background: linear-gradient(
         90deg,
-        rgba(247, 210, 241, 1) 0%,
+        #f7d2f1 0%,
         rgb(250, 223, 238) 50%
     );
 }
@@ -484,6 +501,11 @@
         font-size: 0.9em;
         margin-bottom: 12px;
     }
+
+    .dwn{
+      display: flex;
+      flex-direction: column;
+    }
 }
 </style>
       <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
@@ -512,6 +534,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
    const button = document.getElementById("btn");
    const cards = document.getElementById("CardContainer");
+   var link=document.getElementById("dwn");
 
    button.addEventListener("click", () => {
 
@@ -521,7 +544,9 @@ window.addEventListener("DOMContentLoaded", () => {
       button.style.visibility="hidden";
       button.remove()
       cards.scrollIntoView({ behavior: "smooth", block: "start" });
+      link.style.visibility="visible"
 
+      
    });
 
    button.addEventListener("mouseenter", () => {
@@ -1076,5 +1101,17 @@ if (average > 40) {
             </div>
          </div>
       </div>
+      
+
+<!-- Link to PDF in root directory -->
+
+   </div>
+   <div id="dwn" class="dwn">
+      <a href="/cards/Denice.pdf" download="denice.pdf" >
+    Download Surprise1
+      </a>
+      <a href="/cards/TJ.pdf" download="TJ.pdf" >
+    Download Surprise2
+      </a>
    </div>
 </html>
