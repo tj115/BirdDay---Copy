@@ -417,56 +417,49 @@
          text-align: center;
          margin: 10px 20px;
          }
-         @media only screen and (max-width:600px){
-.CardContainer{
+@media only screen and (max-width:600px){
+   .CardContainer{
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 40px;
+      align-items: flex-end;
+      justify-content: right;
+      padding-right: 0;
+      margin-right: -10px;
 
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-
-      margin: 0;
-      overflow-x: hidden;
    }
 
    .card{
-      width: 100%;
-      max-width: 320px;
-      height: auto;
-      min-height: 420px;
-
-      margin: 0;
-      transform: none;
+      width: 180px;
+      height: 280px;
+      justify-self: right;
    }
 
-   .card .front,
-   .card .back{
-      width: 100%;
-      height: 100%;
-   }
-
-   .card .front img,
-   .card .back img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+   .card p,
+   .card p2{
+      font-size: 0.7em;
+      line-height: 1.4;
+      margin: 8px 12px;
    }
 
    .card .container,
    .card .container2{
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
+      padding: 60px;
+       justify-self: right;
    }
-         .ins{
-         margin-bottom: -300000px;
-         }
-      }
-      </style>
+   .CardContainer{
+   align-items: flex-end !important;
+   justify-content: flex-start !important;
+
+   width: 100%;
+   padding-right: 0;
+}
+
+.card{
+   margin-left: auto !important;
+   margin-right: 0 !important;
+}
+}
+</style>
       <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
       <script>
          const buttonHeight = 50;
@@ -488,6 +481,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       cards.style.visibility = "visible";
       button.style.visibility="hidden";
+      button.remove()
       cards.scrollIntoView({ behavior: "smooth", block: "start" });
 
    });
@@ -523,6 +517,7 @@ window.addEventListener("DOMContentLoaded", () => {
          audio: true
          },
          function(stream) {
+         let micEnabled = true;   
          var fire0 = document.getElementById("fire0");
          var fire1 = document.getElementById("fire1");
          var fire2 = document.getElementById("fire2");
@@ -534,6 +529,19 @@ window.addEventListener("DOMContentLoaded", () => {
          var f = document.getElementById("ins");
          var cards = document.getElementById("CardContainer");
          var b = document.getElementById("btn")
+
+         function disableMic() {
+
+   if (!micEnabled) return;
+
+   stream.getTracks().forEach(track => {
+      track.stop();
+   });
+
+   micEnabled = false;
+
+   console.log("Microphone disabled");
+}
          
          audioContext = new AudioContext();
          analyser = audioContext.createAnalyser();
@@ -571,11 +579,11 @@ window.addEventListener("DOMContentLoaded", () => {
                fire4.style.display = "block";
              }
            
-             if (average > 5) fire0.style.display = "none";
-             if (average > 10) fire1.style.display = "none";
-             if (average > 15) fire2.style.display = "none";
-             if (average > 20) fire3.style.display = "none";
-             if (average > 30) fire4.style.display = "none"; 
+             if (average > 10) fire0.style.display = "none";
+             if (average > 20) fire1.style.display = "none";
+             if (average > 25) fire2.style.display = "none";
+             if (average > 30) fire3.style.display = "none";
+             if (average > 35) fire4.style.display = "none"; 
          
             function setvis()
             {
@@ -593,26 +601,30 @@ window.addEventListener("DOMContentLoaded", () => {
                   }, 1000);
             }
          
-            function setvis1()
-            {
-               
-         
-               
-         
-               x.style.visibility = "visible";
-               y.style.visibility = "visible";
-               x.scrollIntoView({ behavior: "smooth", block: "start" });
-               
-              
-         
-                 
-            }
-            
-            if (average > 30) {
-                     setTimeout(() => {
-                     setvis1()
-                  }, 2000);
-            }         
+let hasScrolled = false;
+
+function setvis1() {
+
+   x.style.visibility = "visible";
+   y.style.visibility = "visible";
+   disableMic()
+   if (!hasScrolled) {
+      x.scrollIntoView({
+         behavior: "smooth",
+         block: "start"
+      });
+
+      hasScrolled = true;
+   }
+}
+
+if (average > 30 && !hasScrolled) {
+
+   setTimeout(() => {
+      setvis1();
+   }, 2000);
+}
+           
          
            } // end fn stream
          },
